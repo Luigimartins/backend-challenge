@@ -4,9 +4,7 @@ Case técnico Comunidade de Seguros.
 
 ## Instruções Básicas
 
-These instructions will give you a copy of the project up and running on
-your local machine for development and testing purposes. See deployment
-for notes on deploying the project on a live system.
+Segue algumas instruções básicas para rodar a aplicação e testar os cenários solicitados.
 
 ### Pré-requisitos
 
