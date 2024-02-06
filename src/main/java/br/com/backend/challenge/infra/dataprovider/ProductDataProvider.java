@@ -1,5 +1,6 @@
 package br.com.backend.challenge.infra.dataprovider;
 
+import br.com.backend.challenge.application.exception.GeneralProductException;
 import br.com.backend.challenge.application.exception.ProductNotFoundException;
 import br.com.backend.challenge.application.gateway.ProductGateway;
 import br.com.backend.challenge.core.domain.Product;
@@ -22,16 +23,25 @@ public class ProductDataProvider implements ProductGateway {
 
     @Override
     public Product createProduct(Product product) {
+        if (product == null) {
+            LOGGER.error("Produto não pode ser criado, pois, está nulo.");
+            throw new GeneralProductException("Produto não pode ser criado, pois, está nulo.");
+        }
         ProductEntity productEntity = new ProductEntity();
         productEntity.setName(product.getName());
         productEntity.setBasePrice(product.getBasePrice());
-        productEntity.setCalculedPrice(product.getTariffedPrice());
+        productEntity.setTariffedPrice(product.getTariffedPrice());
         productEntity.setCategory(product.getCategory());
         return ProductEntityMapper.toProduct(productRepository.save(productEntity));
     }
 
     @Override
     public Product updateProduct(Integer id, Product product) {
+        if (product == null) {
+            LOGGER.error("Produto não pode ser criado, pois, está nulo.");
+            throw new GeneralProductException("Produto não pode ser criado, pois, está nulo.");
+        }
+
         Optional<ProductEntity> productOpt = productRepository.findById(id);
         if (productOpt.isEmpty()) {
             LOGGER.error("Produto com código {} não encontrado", id);
@@ -40,7 +50,7 @@ public class ProductDataProvider implements ProductGateway {
         ProductEntity productEntity = productOpt.get();
         productEntity.setName(product.getName());
         productEntity.setBasePrice(product.getBasePrice());
-        productEntity.setCalculedPrice(product.getTariffedPrice());
+        productEntity.setTariffedPrice(product.getTariffedPrice());
         productEntity.setCategory(product.getCategory());
         return ProductEntityMapper.toProduct(productRepository.save(productEntity));
     }

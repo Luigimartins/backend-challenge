@@ -32,7 +32,9 @@ services:
         - GF_SECURITY_ADMIN_USER=admin
         - GF_SECURITY_ADMIN_PASSWORD=grafana
       volumes:
-        - ./grafana:/etc/grafana/provisioning/datasources
+        - ./grafana/datasources:/etc/grafana/provisioning/datasources
+        - ./grafana/providers:/etc/grafana/provisioning/dashboards
+        - ./grafana/dashboards:/var/lib/grafana/dashboards
       network_mode: host
 volumes:
   prom_data:

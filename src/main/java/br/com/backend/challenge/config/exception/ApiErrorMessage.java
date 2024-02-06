@@ -1,12 +1,12 @@
 package br.com.backend.challenge.config.exception;
 
-import lombok.Data;
+import lombok.Getter;
 import org.springframework.http.HttpStatusCode;
 
 import java.util.Arrays;
 import java.util.List;
 
-@Data
+@Getter
 public class ApiErrorMessage {
 
     private HttpStatusCode status;

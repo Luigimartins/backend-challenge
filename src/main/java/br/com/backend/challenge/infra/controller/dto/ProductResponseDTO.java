@@ -1,16 +1,16 @@
 package br.com.backend.challenge.infra.controller.dto;
 
+import br.com.backend.challenge.config.serialize.PriceSerializer;
 import br.com.backend.challenge.core.domain.Category;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
 import java.math.BigDecimal;
 
-@Data
+@Getter
 @AllArgsConstructor
-@NoArgsConstructor
 public class ProductResponseDTO {
 
     @JsonProperty("codigo")
@@ -20,8 +20,10 @@ public class ProductResponseDTO {
     @JsonProperty("categoria")
     private Category category;
     @JsonProperty("preco_base")
+    @JsonSerialize(using = PriceSerializer.class)
     private BigDecimal basePrice;
     @JsonProperty("preco_tarifado")
+    @JsonSerialize(using = PriceSerializer.class)
     private BigDecimal tariffedPrice;
 
 }

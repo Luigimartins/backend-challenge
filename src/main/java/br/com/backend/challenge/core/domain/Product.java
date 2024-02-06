@@ -1,7 +1,6 @@
 package br.com.backend.challenge.core.domain;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 
 public class Product {
     private Integer id;
@@ -62,19 +61,6 @@ public class Product {
 
     public void setTariffedPrice(BigDecimal tariffedPrice) {
         this.tariffedPrice = tariffedPrice;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return Objects.equals(id, product.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
     }
 
 }

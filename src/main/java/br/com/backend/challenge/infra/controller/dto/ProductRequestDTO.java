@@ -4,11 +4,17 @@ import br.com.backend.challenge.core.domain.Category;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
-@Data
+@Getter
+@AllArgsConstructor
+@Setter
+@NoArgsConstructor
 public class ProductRequestDTO {
 
     @JsonProperty("nome")
@@ -18,6 +24,6 @@ public class ProductRequestDTO {
     @NotNull(message = "categoria deve ter os seguintes valores: VIDA|AUTO|VIAGEM|RESIDENCIAL|PATRIMONIAL")
     private Category category;
     @JsonProperty("preco_base")
-    @NotNull
+    @NotNull(message = "preço base não pode ser nulo")
     private BigDecimal basePrice;
 }
