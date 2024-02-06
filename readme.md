@@ -21,10 +21,6 @@ Comando para executar o docker-compose (no linux pode ser necessário utilizar o
 
     docker-compose up
 
-Comando para executar aplicação (também é possivel executar o projeto na sua IDE)
-
-    mvn spring-boot:run
-
 ## Testes Automatizados
 
 Para ver os resultados dos testes automatizados basta executá-los com o maven ou IDE de sua preferência.
