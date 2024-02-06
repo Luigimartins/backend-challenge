@@ -33,4 +33,4 @@ management:
     baggage:
       enabled: true
     enabled: true
-  zipkin.tracing.endpoint: http://localhost:9411/api/v2/spans
+  zipkin.tracing.endpoint: ${ZIPKIN_URL:http://localhost:9411/api/v2/spans}
